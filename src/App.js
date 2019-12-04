@@ -3,9 +3,10 @@ import logo from './logo.svg';
 import './App.css';
 import Pokemon from './components/Pokemon';
 import { Input, Label } from '@rebass/forms';
-import { Box, Button, Flex } from 'rebass';
+import { Box, Button, Flex, Heading, Text, Image } from 'rebass';
 import { ThemeProvider } from 'emotion-theming';
 import theme from '@rebass/preset'
+import pokemonLogo from './pokemonLogo.png';
 
 function App() {
   const [data, setData] = useState({});
@@ -30,18 +31,20 @@ function App() {
     <ThemeProvider theme={theme}>
       <Box className="App">
       {/* {isLoading && <p>Loading...</p>} */}
-      {isError ? <p>Error in request</p> : <p>No Errors</p>}
+      <Image py="25px" height="250px" src={pokemonLogo} alt="Pokemon"></Image>
+      <Heading fontSize='20px' color='#3B4CCA' py="40px">ENTER A POKEMON</Heading>
+      {/* <Label textAlign="center" htmlFor="name">Enter Pokemon Name</Label> */}
       <Flex py="20px">
         <Box width={1/3}></Box>
-          {/* <Label htmlFor="name">Name</Label> */}
           <Input width={1/3} id="name" name="name" onChange={e => setQuery(e.target.value)} />
         <Box width={1/3}></Box>
       </Flex>
-      <Button onClick={e => sendData()}>Search</Button>
+      <Button backgroundColor='#3B4CCA' color='#FFDE00' onClick={e => sendData()}>Search</Button>
       {isLoading ? 
         (<p>Loading...</p>) :
         (<Pokemon name={data.name} id={data.id} image={data.sprites.front_default}/>)
       }
+      {isError && <Text>Error in request</Text>}
       </Box>
     </ThemeProvider>
   );
