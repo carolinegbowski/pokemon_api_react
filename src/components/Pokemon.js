@@ -6,7 +6,8 @@ const pokemon = (props) => {
         <Box
         sx={{
             justifyContent: 'center', 
-            textAlign: 'center' 
+            textAlign: 'center', 
+            padding: '75px'
         }}>
             <Image py="25px" src={props.image} alt={props.name}/>
             <Flex>
