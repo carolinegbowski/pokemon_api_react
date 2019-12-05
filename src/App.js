@@ -42,7 +42,7 @@ function App() {
       <Button backgroundColor='#3B4CCA' color='#FFDE00' onClick={e => sendData()}>Search</Button>
       {isLoading ? 
         (<p>Loading...</p>) :
-        (<Pokemon name={data.name} id={data.id} image={data.sprites.front_default}/>)
+        (<Pokemon name={data.name} id={data.id} image={data.sprites.front_default} weight={data.weight}/>)
       }
       {isError && <Text>Error in request</Text>}
       </Box>
