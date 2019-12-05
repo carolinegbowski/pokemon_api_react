@@ -18,7 +18,7 @@ const pokemon = (props) => {
                     textAlign: 'center',
                     color: '#3B4CCA'
                 }}>
-                    <Heading>{props.name}</Heading>
+                    <Heading>{props.name.toUpperCase()}</Heading>
                     <Text>{props.id}</Text>
                 </Box>
                 <Box width={1/3}></Box>

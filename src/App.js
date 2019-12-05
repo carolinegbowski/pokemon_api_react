@@ -39,7 +39,7 @@ function App() {
           <Input width={1/3} id="name" name="name" onChange={e => setQuery(e.target.value)} />
         <Box width={1/3}></Box>
       </Flex>
-      <Button radii={12} backgroundColor='#3B4CCA' color='#FFDE00' onClick={e => sendData()}>Search</Button>
+      <Button backgroundColor='#3B4CCA' color='#FFDE00' onClick={e => sendData()}>Search</Button>
       {isLoading ? 
         (<p>Loading...</p>) :
         (<Pokemon name={data.name} id={data.id} image={data.sprites.front_default}/>)
