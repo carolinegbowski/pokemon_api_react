@@ -19,7 +19,7 @@ const pokemon = (props) => {
                     minHeight: '400px',
                     boxShadow: 'none'
                     }}>
-                    <Heading textAlign='left' fontSize="20px" p='0'>{props.name.toUpperCase()}</Heading>
+                    <Heading sx={{textTransform: 'capitalize'}} color='#3B4CCA' textAlign='left' fontSize="20px" p='0'>{props.name}</Heading>
                     <Card sx={{
                         margin: '15px',
                         backgroundColor: 'gold'
@@ -27,8 +27,8 @@ const pokemon = (props) => {
                         <Image contentAlign="center" py="25px" src={props.image} alt={props.name}/>
                     </Card>
                     <Card backgroundColor='lightgrey' padding='30px' margin='15px'>
-                        <Text>ID : {props.id}</Text>  
-                        <Text>Weight : {props.weight}</Text>
+                        <Text color='#3B4CCA'>ID : {props.id}</Text>  
+                        <Text color='#3B4CCA'>Weight : {props.weight}</Text>
                     </Card>
                 </Card>
             </Card>
