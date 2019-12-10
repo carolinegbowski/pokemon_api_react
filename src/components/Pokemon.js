@@ -1,7 +1,8 @@
-import React from 'react';
-import { Box, Image, Heading, Text, Flex, Card } from 'rebass';
+import React, { useState, useEffect } from 'react';
+import { Input } from '@rebass/forms';
+import { Box, Image, Heading, Text, Flex, Card, Button} from 'rebass';
 
-const pokemon = (props) => {
+const Pokemon = (props) => {
     return (
         <Flex py="100px" contentAlign="center">
             <Box width={2/5}></Box>
@@ -27,35 +28,16 @@ const pokemon = (props) => {
                         <Image contentAlign="center" py="25px" src={props.image} alt={props.name}/>
                     </Card>
                     <Card backgroundColor='lightgrey' padding='30px' margin='15px'>
-                        <Text color='#3B4CCA'>ID : {props.id}</Text>  
+                        <Text color='#3B4CCA'>ID : {props.id}</Text>
+                        <Text color='#3B4CCA'>Type : {props.type}</Text>
                         <Text color='#3B4CCA'>Weight : {props.weight}</Text>
                     </Card>
                 </Card>
             </Card>
             <Box width={2/5}></Box>
         </Flex>
-        // <Box
-        // sx={{
-        //     justifyContent: 'center', 
-        //     textAlign: 'center', 
-        //     padding: '75px'
-        // }}>
-        //     <Flex>
-        //         <Card>
-        //         <Image py="25px" src={props.image} alt={props.name}/>
-
-        //                 <Box width={1/3}
-        //                 sx={{
-        //                     justifyContent: 'center', 
-        //                     textAlign: 'center',
-        //                     color: '#3B4CCA'
-        //                 }}>
-        //                     <Heading>{props.name.toUpperCase()}</Heading>
-        //                     <Text>{props.id}</Text>
-        //         </Card>
-        //     </Flex>
-        // </Box>
-    )
+    ) 
 }
 
-export default pokemon
+
+export default Pokemon;
