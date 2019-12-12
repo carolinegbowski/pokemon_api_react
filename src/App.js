@@ -13,8 +13,6 @@ import { Box, Image, Button } from 'rebass';
 import { ThemeProvider } from 'emotion-theming';
 import theme from '@rebass/preset'
 import { Route } from 'react-router-dom';
-import { isAbsolute } from 'path';
-import { isArgumentPlaceholder } from '@babel/types';
 
 
 function App() {
@@ -79,22 +77,34 @@ function App() {
     setTeam(currentTeam);
   }
 
+  let data = null;
+
+  if (token) {
+    data = (
+      <TeamContext.Provider value={{team:team, addToTeam:addToTeam, removeFromTeam:removeFromTeam}}>
+        <Route path='/lookup' component={Lookup} />
+        <Route path='/team' component={Team} />
+        <Button onClick={e => setToken('')}>Logout</Button>
+      </TeamContext.Provider>
+    )
+  } else {
+    data = (
+      <div>
+        <input type="text" onChange={e => setInputUser(e.target.value)} placeholder='Username'/>
+        <input type="password" onChange={e => setInputPassword(e.target.value)} placeholder='Password'/>
+        <Button onClick={e => getToken()}>Log In</Button>
+        {authError && <p>Authentication Error</p>}
+      </div>
+    )
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <Box height='1250px' className="App">
       <Image py="25px" height="250px" src={pokemonLogo} alt="Pokemon"></Image>
       <Header/>
-      <input type="text" onChange={e => setInputUser(e.target.value)} placeholder='Username'/>
-      <input type="password" onChange={e => setInputPassword(e.target.value)} placeholder='Password'/>
-      <Button onClick={e => getToken()}>Log In</Button>
-      {authError && <p>Authentication Error</p>}
-      <TeamContext.Provider value={{team:team, addToTeam:addToTeam, removeFromTeam:removeFromTeam}}>
-        <Route path='/lookup' component={Lookup} />
-        <Route path='/team' component={Team} />
-      </TeamContext.Provider>
-      
-
-      {/* <Router/> */}
+      {/* {token ? <App/> : <Login/>} */}
+      {data}
       </Box>
     </ThemeProvider>
   );
